@@ -1,5 +1,5 @@
 # Credits
-This repository was taken from https://github.com/CS287/HW1/tree/master/data
+This repository was taken from https://github.com/CS287/HW1/tree/master/data  
 We modify the preprocess script and add some more corpus.
 
 # Usage
