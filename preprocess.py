@@ -8,6 +8,7 @@ import sys
 import codecs
 import pandas
 import argparse
+import yaml
 
 def clean_str(string):
     """
@@ -29,29 +30,6 @@ def clean_str(string):
     return string.strip().lower()
 
 
-# Different data sets to try.
-# Note: TREC has no development set.
-# And SUBJ and MPQA have no splits (must use cross-validation)
-FILE_PATHS = {"MR":{"train":"data/rt-polarity.all",
-                    "dev":None,
-                    "test":None},
-              "SST1": {"train":"data/stsa.fine.phrases.train",
-                       "dev":"data/stsa.fine.dev",
-                       "test":"data/stsa.fine.test"},
-              "SST2": {"train":"data/stsa.binary.phrases.train",
-                       "dev:":"data/stsa.binary.dev",
-                       "test":"data/stsa.binary.test"},
-              "TREC": {"train":"data/TREC.train.all",
-                       "dev":None,
-                       "test":"data/TREC.test.all"},
-              "SUBJ": {"train":"data/subj.all",
-                       "dev":None,
-                       "test":None},
-              "MPQA": {"train":"data/mpqa.all",
-                       "dev":None,
-                       "test":None}}
-
-
 def parse_arg(argv):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('dataset', help='dataset name')
@@ -60,9 +38,13 @@ def parse_arg(argv):
 if __name__ == '__main__':
     args = parse_arg(sys.argv)
     dataset = args.dataset
-
     dfs = []
-    for split, filename in FILE_PATHS[dataset].items():
+    with open('corpus.yaml') as f:
+        corpus = yaml.load(f)
+        corpus_dir = corpus['dir']
+
+    for split, filename in corpus[dataset].items():
+        filename = corpus_dir+'/'+filename
         if not filename:
             continue
         labels = []

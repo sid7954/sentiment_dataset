@@ -1,0 +1,26 @@
+dir: data
+
+MR:
+    train: rt-polarity.all
+
+SST1:
+    train: stsa.fine.phrases.train
+    dev: stsa.fine.dev
+    test: stsa.fine.test
+
+SST2:
+    train: stsa.binary.phrases.train
+    dev: stsa.binary.dev
+    test: stsa.binary.test
+
+TREC:
+    train: TREC.train.all
+    test: TREC.test.all
+
+SUBJ:
+    train: subj.all
+
+MPQA:
+    train: mpqa.all
+
+
