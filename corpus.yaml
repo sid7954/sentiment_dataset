@@ -23,4 +23,5 @@ SUBJ:
 MPQA:
     train: mpqa.all
 
-
+LJ40K:
+    train: lj40k.all

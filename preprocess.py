@@ -51,8 +51,9 @@ if __name__ == '__main__':
         sentences = []
         with open(filename) as f:
             for line in f:
-                sentences.append(clean_str(line[2:]))
-                labels.append(int(line[0]))
+                div = line.index(' ')
+                sentences.append(clean_str(line[div+1:]))
+                labels.append(line[:div])
         dfs.append(pandas.DataFrame({'sentence':sentences, 'label':labels, 'split':split}))
 
     filename = args.dataset + '.pkl'
