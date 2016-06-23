@@ -1,7 +1,11 @@
 dir: data
 
 MR:
-    train: rt-polarity.all
+    train: panglee/rt-polarity.all
+
+MR2:
+    dir: panglee/txt_sentoken
+    labels: [neg, pos]
 
 SST1:
     train: stsa.fine.phrases.train

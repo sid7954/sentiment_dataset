@@ -1,15 +1,19 @@
 # Credits
 This repository was taken from https://github.com/CS287/HW1/tree/master/data  
-We modify the preprocess script and add some more corpus.
+We modify the preprocessing script to get pandas output format.
 
 # Usage
 ```bash
-./preprocess.py [corpus name]
+./preprocess.py [-m yaml_file] CORPUS
+# Use -m option to specify CORPUS symbol and real file path  
+# Example: ./preprocess.py -m corpus.yaml MR
+# A file named MR.pkl will be generated (pandas format)
 ```
-
-# Extension
-Please see corpus.yaml
-
+# Load data with python
+```python
+corpus = pandas.read_pickle('MR.pkl')
+sentences, labels = list(corpus.sentence), list(corpus.label)
+```
 
 # Datasets
 
