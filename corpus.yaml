@@ -41,7 +41,7 @@ MR2:
     dir: panglee/txt_sentoken
 
 LJ40K:
-    dir: /corpus/LiveJournal/LJ40k/rawdata
+    dir: /corpus/sentiment_dataset_non_public/LiveJournal/LJ40k/rawdata
     postprocess: lj40kreduce
 
 
