@@ -5,10 +5,12 @@ We modify the preprocessing script to get pandas output format.
 # Usage
 ```bash
 ./preprocess.py [-m yaml_file] CORPUS
-# Use -m option to specify CORPUS symbol and real file path  
-# Example: ./preprocess.py -m corpus.yaml MR
+# Use -m option to specify the loading setting yaml file.
+# Example: ./preprocess.py -m data.yaml MR
 # A file named MR.pkl will be generated (pandas format)
+# Please see comments in corpus.yaml to see how to configure the setting
 ```
+
 # Load data with python
 ```python
 corpus = pandas.read_pickle('MR.pkl')

@@ -10,6 +10,7 @@ import codecs
 import pandas
 import argparse
 import yaml
+import importlib
 
 def clean_str(string):
     """
@@ -70,9 +71,10 @@ if __name__ == '__main__':
 
     if 'dir' in dataset:
         corpus_dir = os.path.join(corpus_dir, dataset['dir'])
-        for label in dataset['labels']:
-            
-            os.path.walk(os.path.join(corpus_dir, label), append_document, dataframe_list)
+        for emotion in os.listdir(corpus_dir):
+            emotion_dir = os.path.join(corpus_dir, emotion)
+            if os.path.isdir(emotion_dir):
+                os.path.walk(emotion_dir, append_document, dataframe_list)
     else:
         for split, filename in dataset.items():
             filename = corpus_dir+'/'+filename
@@ -87,6 +89,14 @@ if __name__ == '__main__':
                     labels.append(line[:div])
             dataframe_list.append(pandas.DataFrame({'sentence':sentences, 'label':labels, 'split':split}))
 
+    dataframe = pandas.concat(dataframe_list)
+
+    if 'postprocess' in dataset:
+        assert 'postprocess_dir' in corpus, 'Please specify postprocessing scripts directories.'
+        module = importlib.import_module(corpus['postprocess_dir']+'.'+dataset['postprocess'])
+        assert 'doit' in module.__dict__, 'Please implement the doit function (dataframe->dataframe) int {}'.format(dataset['postprocess'])
+        dataframe = module.doit(dataframe)
+
     filename = args.dataset + '.pkl'
-    pandas.concat(dataframe_list).to_pickle(filename)
+    dataframe.to_pickle(filename)
     # pandas.concat(dataframe_list).to_csv(filename+'.csv')
