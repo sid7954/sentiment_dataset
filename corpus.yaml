@@ -43,5 +43,3 @@ MR2:
 LJ40K:
     dir: /corpus/sentiment_dataset_non_public/LiveJournal/LJ40k/rawdata
     postprocess: lj40kreduce
-
-
