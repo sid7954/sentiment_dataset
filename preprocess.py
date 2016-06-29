@@ -89,7 +89,7 @@ if __name__ == '__main__':
                     labels.append(line[:div])
             dataframe_list.append(pandas.DataFrame({'sentence':sentences, 'label':labels, 'split':split}))
 
-    dataframe = pandas.concat(dataframe_list)
+    dataframe = pandas.concat(dataframe_list, ignore_index=True)
 
     if 'postprocess' in dataset:
         assert 'postprocess_dir' in corpus, 'Please specify postprocessing scripts directories.'
