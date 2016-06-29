@@ -63,6 +63,7 @@ def doit(dataframe):
             continue
         elif e in mapping.keys():
             index.append(idx)
+            row['label'] = mapping[e]
             statistics[mapping[e]]+=1
 
     print statistics
