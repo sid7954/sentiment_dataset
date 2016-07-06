@@ -34,6 +34,9 @@ SUBJ:
 MPQA:
     train: mpqa.all
 
+YAHOO:
+    train: yahoo_blog.all
+
 # Each of the following corpus are collected in several directories
 # All documents(sentences) of the same emotion is collected in the same directory
 
