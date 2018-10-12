@@ -23,10 +23,16 @@ The following datasets are included in this directory:
 ## Data files
 
 --- | ---
-MR | rt-polarity.all
-SST-1 | stsa.fine.\*
-SST-2 | stsa.binary.\*
-Subj | subj.all
-TREC | TREC.\*
-CR | custrev.all
-MPQA | mpqa.all
+MR : rt-polarity.all
+
+SST-1 : stsa.fine.\*
+
+SST-2 : stsa.binary.\*
+
+Subj : subj.all
+
+TREC : TREC.\*
+
+CR : custrev.all
+
+MPQA : mpqa.all
